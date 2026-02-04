@@ -1,0 +1,34 @@
+identity:
+  name: "Todo List AI"
+  description: "Assistente Inteligente de Lista de Tarefas"
+  version: "0.1"
+
+statement:
+  domain: "Gerenciamento de Tarefas"
+
+  problem:
+    given: "Gerenciar tarefas de forma eficiente"
+    who: "Usuário"
+    faces: "Dificuldade em manter uma lista de tarefas organizada"
+    resulting: "Desorganização e falta de produtividade"
+
+  solution:
+    should: "Consolidar tarefas de múltiplos usuários"
+    so: "O usuário escolher rapidamente a opção mais produtiva"
+
+  metrics: #(Optional)
+  - "Tempo de execução da tarefa"
+  - "Produtividade do usuário"
+  - "Satisfação do usuário"
+
+  success_criteria: #(Optional)
+  - "O usuário ter 90% de satisfação com a lista de tarefas"
+  - "O usuário ter 90% de produtividade com a lista de tarefas"
+  - "O usuário ter 90% de satisfação com a compra"
+
+  constraints: #(Optional)
+  - "Não devemos influenciar a decisão do usuário em relação às tarefas"
+
+technology_preferences: #(Optional)
+  preference_status: "provided" # provided|no_preference|unknown
+  notes: "Vamos usar o OpenAI API para gerar as tarefas"

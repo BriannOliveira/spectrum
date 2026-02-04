@@ -1,34 +1,34 @@
 identity:
-  name: "Market Smart"
-  description: "Assistente Inteligente de Compras"
-  version: "0.1"
+  name:
+  description:
+  version:
 
 statement:
-  domain: "Varejo Alimentar"
+  domain:
 
   problem:
-    given: "Compras mensais com preços variáveis entre mercados"
-    who: "Consumidor"
-    faces: "Dificuldade em comparar o custo total da lista"
-    resulting: "Decisões financeiras subótimas"
+    given:
+    who:
+    faces:
+    resulting:
 
   solution:
-    should: "Consolidar preços de múltiplos mercados"
-    so: "O usuário escolher rapidamente a opção mais econômica"
+    should:
+    so:
 
   metrics: #(Optional)
-  - "Custo total da lista"
-  - "Tempo de compra"
-  - "Satisfação do usuário"
+  -
+  -
+  -
 
   success_criteria: #(Optional)
-  - "O usuário economizar 10% no custo total da lista"
-  - "O usuário comprar em menos de 10 minutos"
-  - "O usuário ter 90% de satisfação com a compra"
+  -
+  -
+  -
 
   constraints: #(Optional)
-  - "Não devemos influenciar a decisão do usuário"
+  -
 
 technology_preferences: #(Optional)
-  preference_status: "unknown" # provided|no_preference|unknown
-  notes: ""
+  preference_status:
+  notes:
