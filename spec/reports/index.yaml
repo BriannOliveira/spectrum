@@ -1,0 +1,14 @@
+report_counters:
+  backend: 1
+  frontend: 1
+  qa: 1
+  devops: 1
+  requirement_engineer: 1
+  software_architect: 1
+  project_manager: 1
+format:
+  padding: 2
+  pattern: "<NN>_<role>_report.md"
+instructions:
+  - "Use the current counter for the role, pad with format.padding, then increment the counter."
+  - "Example: counter backend=1 -> create 01_backend_report.md -> update backend to 2."

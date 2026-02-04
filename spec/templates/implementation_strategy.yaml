@@ -1,0 +1,43 @@
+# spec/domains/<context>/implementation_strategy.yaml
+metadata:
+  id: "IMPL-STRAT-XXX"
+  version: "0.1"
+  status: "draft" # draft|review|approved
+  context_id: "CTX-XXX"
+  inputs:
+    - "spec/functional_requirements.yaml"
+    - "spec/non_functional_requirements.yaml"
+    - "spec/transactional_requirements.yaml (optional)"
+    - "spec/domains/CTX-XXX/plan.yaml"
+    - "spec/domains/CTX-XXX/technology_stack.yaml"
+
+# Estrategia de implementacao por fases e por funcao
+implementation_strategy:
+  phases:
+    - id: "PHASE-1"
+      name: "Setup"
+      objective: "<Preparar base tecnica>"
+      gate: "Nenhuma user story pode iniciar antes desta fase"
+      roles:
+        backend: ["TASK-CTX-XXX-001"]
+        frontend: []
+        qa: []
+        devops: []
+    - id: "PHASE-2"
+      name: "Core infrastructure"
+      objective: "<Infra/contratos/base compartilhada>"
+      gate: "User stories bloqueadas ate fase concluida"
+      roles:
+        backend: []
+        frontend: []
+        qa: []
+        devops: ["TASK-CTX-XXX-010"]
+    - id: "PHASE-3"
+      name: "User Story 1"
+      objective: "<Implementar US-001>"
+      gate: "Depende de fases anteriores"
+      roles:
+        backend: ["TASK-CTX-XXX-020"]
+        frontend: ["TASK-CTX-XXX-021"]
+        qa: ["TASK-CTX-XXX-022"]
+        devops: []

@@ -1,0 +1,65 @@
+# spec/domains/<context>/technology_stack.yaml
+metadata:
+  id: "TS-XXX"
+  version: "0.1"
+  status: "draft" # draft|review|approved
+  context_id: "CTX-XXX"
+  inputs:
+    - "spec/00_statement.yaml"
+    - "spec/non_functional_requirements.yaml"
+    - "spec/functional_requirements.yaml"
+    - "spec/domain_model.yaml"
+
+technology_preferences:
+  source: "spec/00_statement.yaml#technology_preferences"
+  status: "<provided|no_preference|unknown>"
+  notes: "<copiar do statement ou registrar decisoes do arquiteto>"
+
+stack:
+  language: "<ex: TypeScript|Python|Go|Java|...>"
+  runtime: "<ex: Node.js|JVM|...>"
+  framework: "<ex: NestJS|FastAPI|Spring Boot|...>"
+
+  storage:
+    primary:
+      kind: "<relational|document|event_store|kv>"
+      technology: "<ex: Postgres|MongoDB|DynamoDB|...>"
+      rationale: "<Por que esta escolha atende FR/NFR?>"
+    cache:
+      technology: "<ex: Redis|none>"
+      use_cases: ["<ex: read-through cache>", "<rate limiting>"]
+    search:
+      technology: "<ex: Elasticsearch|none>"
+      use_cases: []
+
+  messaging:
+    broker: "<ex: Kafka|RabbitMQ|none>"
+    style: "<events|queues|both|none>"
+    rationale: "<Trade-offs e restricoes>"
+
+  api:
+    style: "<REST|gRPC|GraphQL|Events>"
+    contracts: ["<OpenAPI 3.0>", "<AsyncAPI>"]
+
+  auth:
+    strategy: "<ex: JWT|OAuth2|Session|none>"
+    authorization: "<ex: RBAC|ABAC|scopes|none>"
+
+  observability:
+    logging: "<ex: structured json logs>"
+    tracing: "<ex: OpenTelemetry>"
+    metrics: "<ex: Prometheus>"
+    slos: ["<ex: p95 latency>", "<availability>"]
+
+  delivery:
+    packaging: "<ex: container|serverless|vm>"
+    ci: "<ex: GitHub Actions>"
+    cd: "<ex: blue/green|rolling|manual>"
+
+constraints:
+  compliance: ["<LGPD|PCI|...>"]
+  data_residency: "<ex: Brazil|US|EU|n/a>"
+  secrets_management: "<ex: Vault|KMS|...>"
+
+open_questions:
+  - "<Pergunta que bloqueia a escolha do stack>"

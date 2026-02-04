@@ -1,0 +1,31 @@
+# spec/domains/<context>/tasks.yaml
+metadata:
+  id: "TASKS-XXX"
+  version: "0.1"
+  status: "draft" # draft|review|approved
+  context_id: "CTX-XXX"
+  inputs:
+    - "spec/functional_requirements.yaml"
+    - "spec/non_functional_requirements.yaml"
+    - "spec/domains/CTX-XXX/plan.yaml"
+    - "spec/domains/CTX-XXX/technology_stack.yaml"
+
+tasks:
+  - id: "TASK-CTX-XXX-001"
+    type: "<setup|core|support>"
+    user_story_ref: "US-XXX"
+    title: "<Titulo curto>"
+    description: "<O que precisa ser entregue?>"
+    priority: "<must|should|could|wont>"
+    depends_on: ["TASK-CTX-XXX-000"]
+    trace:
+      fr_refs: ["FR-XXX"]
+      nfr_refs: ["NFR-SEC-001"]
+    acceptance_criteria:
+      - given: "<contexto>"
+        when: "<acao>"
+        then: "<resultado verificavel>"
+    definition_of_done:
+      - "<Teste passa>"
+      - "<Doc/spec atualizada se necessario>"
+    status: "<todo|doing|blocked|done>"

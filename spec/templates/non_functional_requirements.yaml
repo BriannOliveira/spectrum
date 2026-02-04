@@ -1,0 +1,32 @@
+# spec/non_functional_requirements.yaml
+metadata:
+  id: "NFR-SPEC-XXX"
+  version: "0.1"
+  status: "draft" # draft|review|approved
+  quality_standard: "ISO/IEC 25010"
+  inputs:
+    - "spec/00_statement.yaml"
+
+# Resumo de prioridades para consumo do PM
+priority_summary:
+  must: ["NFR-SEC-001"]
+  should: []
+  could: []
+  wont: []
+
+non_functional_requirements:
+  - id: "NFR-SEC-001"
+    category: "security" # security|reliability|maintainability|performance_efficiency|functional_suitability|...
+    title: "<Requisito nao-funcional observavel>"
+    description: "<O sistema deve... (comportamento/atributo verificavel)>"
+    metric: "<Como medir?>"
+    target: "<Valor alvo / SLO>"
+    priority: "<must|should|could|wont>"
+    scope:
+      applies_to_contexts: ["CTX-XXX"] # vazio = global
+    trace:
+      statement_reference: "<spec/00_statement.yaml#statement.problem|solution|constraints>"
+    verification:
+      method: "<test|review|monitoring|analysis>"
+      acceptance_criteria:
+        - "<Criterio verificavel>"

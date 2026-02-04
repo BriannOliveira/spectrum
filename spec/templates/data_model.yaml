@@ -1,0 +1,52 @@
+# spec/domains/<context>/data_model.yaml
+metadata:
+  id: "DATA-XXX"
+  version: "0.1"
+  status: "draft" # draft|review|approved
+  context_id: "CTX-XXX"
+  inputs:
+    - "spec/domain_model.yaml"
+    - "spec/functional_requirements.yaml"
+    - "spec/non_functional_requirements.yaml"
+    - "spec/domains/CTX-XXX/technology_stack.yaml"
+
+# Modelo implementavel (persistencia). Nao confundir com o spec/domain_model.yaml (conceitual).
+persistence:
+  style: "<relational|document|event_store>"
+  naming:
+    convention: "<snake_case|camelCase|...>"
+
+entities:
+  - name: "<Entity>"
+    description: "<O que representa?>"
+    identifiers:
+      - name: "id"
+        type: "<uuid|int|...>"
+    fields:
+      - name: "<field>"
+        type: "<string|int|decimal|...>"
+        nullable: false
+        pii: false
+        constraints: ["<unique>", "<check ...>"]
+    relations:
+      - type: "<one_to_many|many_to_many|...>"
+        target: "<OtherEntity>"
+        via: "<join_table_or_fk>"
+
+indexes:
+  - name: "<idx_name>"
+    entity: "<Entity>"
+    fields: ["<field>"]
+    unique: false
+
+migrations:
+  tool: "<ex: flyway|liquibase|prisma|alembic|...>"
+  strategy: "<expand_contract|linear>"
+
+consistency:
+  transactions: "<local|saga|outbox>"
+  idempotency: "<keys|constraints|none>"
+
+data_classification:
+  pii_fields: ["<Entity.field>"]
+  retention_policy: "<ex: 2 years>"

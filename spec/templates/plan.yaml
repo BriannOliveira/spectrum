@@ -1,0 +1,86 @@
+# spec/domains/<context>/plan.yaml
+metadata:
+  id: "PLAN-XXX"
+  version: "0.1"
+  status: "draft" # draft|review|approved
+  context_id: "CTX-XXX"
+  inputs:
+    - "spec/00_statement.yaml"
+    - "spec/domain_model.yaml"
+    - "spec/functional_requirements.yaml"
+    - "spec/non_functional_requirements.yaml"
+    - "spec/domains/CTX-XXX/technology_stack.yaml"
+    - "spec/domains/CTX-XXX/data_model.yaml"
+
+# 1. Estratégia de Arquitetura (O "Como" Macroscópico)
+architecture_strategy:
+  pattern: "Hexagonal Architecture" # Ex: Hexagonal, Clean, Layered
+  communication_style: "Synchronous (HTTP) + Asynchronous (Events)" # Escolha por contexto
+  persistence_style: "Relational (default)" # Ex: Relational, Document, Event Store
+
+# 1.1 Preferencias de Tecnologia (input do usuario + decisoes do arquiteto)
+technology_preferences:
+  status: "<provided|no_preference|unknown>"
+  user_notes: "<Preferencias ou restricoes simples de tecnologia>"
+  decision_owner: "<user|architect>"
+  architect_decisions:
+    - "<Decisao tomada quando nao havia preferencia>"
+
+# 2. NFR Mapping (Tradução da ISO/IEC 25010 para a prática)
+nfr_realization:
+  - nfr_id: "NFR-SEC-001"
+    application: "<Mecanismos concretos (authn/authz, criptografia, auditoria, LGPD, etc.)>"
+  - nfr_id: "NFR-MAINT-001"
+    application: "<Mecanismos concretos (arquitetura limpa, boundaries, testabilidade, etc.)>"
+
+# 3. ADRs (Architecture Decision Records)
+design_decisions:
+  - id: "ADR-001"
+    title: "<Decisão de alto impacto>"
+    context: "<Por que essa decisão importa neste contexto?>"
+    alternatives: ["<Alternativa A>", "<Alternativa B>", "<Alternativa C>"]
+    decision: "<Escolha>"
+    justification: "<Racional técnico e de negócio, com trade-offs>"
+    trade_offs: ["<Custo/risco 1>", "<Custo/risco 2>"]
+
+# 4. Interface & Integration (Contratos)
+contracts:
+  bounded_context_dependencies: ["CTX-YYY"] # IDs dos contextos (upstream/downstream)
+  external_integrations: ["<Sistema externo>"]
+  api_style: "REST + OpenAPI 3.0" # Ex: REST, gRPC, Events
+
+# 5. Testing Strategy (por contexto)
+testing_strategy:
+  levels:
+    unit:
+      scope: "Domain logic (pure)"
+      owner: "<backend_developer|frontend_developer>"
+      location: "<context-root>/tests/unit"
+      coverage_target: "<ex: >=90% on domain>"
+    integration:
+      scope: "DB/queues/external integrations (as configured)"
+      owner: "qa_engineer"
+      location: "<context-root>/tests/integration"
+      notes: "<Testcontainers/compose, fixtures, test data strategy>"
+    contract:
+      scope: "API/event contracts between frontend/backend and between contexts"
+      owner: "qa_engineer"
+      location: "<context-root>/tests/contract"
+      notes: "<Provider/consumer contracts if used>"
+    e2e:
+      scope: "Critical user flows (thin slices)"
+      owner: "qa_engineer"
+      location: "<repo-root>/tests/e2e"
+  gates:
+    ci:
+      required: ["unit", "integration"]
+      optional: ["contract", "e2e"]
+    merge_policy: "<ex: block merge if unit/integration fail>"
+  trace:
+    nfr_refs: ["NFR-REL-001", "NFR-SEC-001"]
+
+# 6. Technical Definition of Done (DoD)
+technical_dod:
+  - "Cobertura de testes unitários na lógica de domínio > 90%"
+  - "Nenhum segredo (keys) hardcoded no código"
+  - "Logs estruturados com TraceID para observabilidade"

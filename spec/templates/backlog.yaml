@@ -1,0 +1,18 @@
+# backlog.yaml
+metadata:
+  id: "BACKLOG-XXX"
+  version: "0.1"
+  status: "draft" # draft|review|approved
+  inputs:
+    - "spec/functional_requirements.yaml"
+    - "spec/non_functional_requirements.yaml"
+
+user_stories:
+  - id: "US-XXX"
+    description: "Como <papel>, quero <objetivo> para <benefício>"
+    fr_refs: ["FR-XXX"]
+    acceptance_criteria:
+      - given: "<contexto inicial>"
+        when: "<ação>"
+        then: "<resultado esperado>"
+    # Repita o bloco acima para cada user story.

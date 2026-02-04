@@ -1,0 +1,64 @@
+# spec/domain_model.yaml
+metadata:
+  id: "DM-XXX"
+  version: "0.1"
+  status: "draft" # draft|review|approved
+  inputs:
+    - "spec/00_statement.yaml"
+
+# Event Storming (nivel de dominio)
+bounded_contexts:
+  - id: "CTX-XXX"
+    name: "<Nome do contexto>"
+    directory_name: "<slug-do-contexto>" # usado como nome da pasta em spec/domains/
+    purpose: "<O que este contexto resolve?>"
+    owners: ["<Time/Responsavel>"]
+    ubiquitous_language:
+      glossary:
+        - term: "<Termo>"
+          meaning: "<Significado no dominio>"
+    owns:
+      entities: ["<Entity>"]
+      events: ["<EventName>"]
+      commands: ["<CommandName>"]
+    publishes:
+      events: ["<EventName>"]
+    subscribes:
+      events: ["<ExternalEventName>"]
+    dependencies:
+      upstream: ["CTX-YYY"]
+      downstream: ["CTX-ZZZ"]
+    notes: "<Hipoteses e limites do contexto>"
+
+domain:
+  events:
+    - id: "EV-XXX"
+      name: "<EventName>"
+      context_id: "CTX-XXX"
+      triggers: ["<CommandName>"]
+      payload:
+        - field: "<field>"
+          type: "<string|int|decimal|uuid|...>"
+          pii: false
+      invariants: ["<Regra que sempre deve ser verdadeira>"]
+  commands:
+    - id: "CMD-XXX"
+      name: "<CommandName>"
+      context_id: "CTX-XXX"
+      actor: "<User|System|Integration>"
+      preconditions: ["<Condicao>"]
+      success_event: "<EventName>"
+      failure_modes: ["<Erro de validacao>", "<Erro de integracao>"]
+  policies:
+    - id: "POL-XXX"
+      name: "<PolicyName>"
+      when_event: "<EventName>"
+      then_command: "<CommandName>"
+
+integration:
+  external_systems:
+    - id: "EXT-XXX"
+      name: "<Sistema externo>"
+      purpose: "<Por que integramos?>"
+      trust_level: "<low|medium|high>"
+      contracts: ["<OpenAPI|Event schema|...>"]

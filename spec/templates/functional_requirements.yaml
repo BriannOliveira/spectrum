@@ -1,0 +1,34 @@
+# spec/functional_requirements.yaml
+metadata:
+  id: "FR-SPEC-XXX"
+  version: "0.1"
+  status: "draft" # draft|review|approved
+  inputs:
+    - "spec/00_statement.yaml"
+
+# Resumo de prioridades para consumo do PM
+priority_summary:
+  must: ["FR-001"]
+  should: []
+  could: []
+  wont: []
+
+# IDs devem ser sequenciais: FR-001, FR-002, ...
+
+functional_requirements:
+  - id: "FR-XXX"
+    title: "<Verbo + objeto (ex: 'Comparar preços entre mercados')>"
+    description: >
+      <O sistema deve... (descrever comportamento observável).
+      Evitar detalhes técnicos.
+      Evitar UI específica.
+      Focar na capacidade.>
+    trace:
+      statement_reference: "<spec/00_statement.yaml#statement.problem.given|solution.should|constraints>"
+    priority: "<must|should|could|wont>"
+    depends_on: ["FR-YYY"]
+    acceptance_criteria:
+      - given: "<contexto inicial>"
+        when: "<acao>"
+        then: "<resultado esperado>"
+    # Repita o bloco acima para cada requisito funcional.

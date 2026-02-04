@@ -1,0 +1,36 @@
+# spec/transactional_requirements.yaml
+metadata:
+  id: "TR-SPEC-XXX"
+  version: "0.1"
+  status: "draft" # draft|review|approved
+  inputs:
+    - "spec/domain_model.yaml"
+    - "spec/functional_requirements.yaml"
+
+# Resumo de prioridades para consumo do PM
+priority_summary:
+  must: ["TR-001"]
+  should: []
+  could: []
+  wont: []
+
+# Requisitos transacionais (consistencia, idempotencia, concorrencia, ordenacao, atomicidade)
+transactional_requirements:
+  - id: "TR-001"
+    title: "<Ex: Idempotencia em comandos>"
+    description: "<O sistema deve...>"
+    scope:
+      context_id: "CTX-XXX"
+      commands: ["CMD-XXX"]
+    constraints:
+      idempotency_key: true
+      ordering_required: false
+      consistency_model: "<strong|eventual|read-your-writes|...>"
+      transaction_boundary: "<aggregate|workflow|outbox|...>"
+    priority: "<must|should|could|wont>"
+    trace:
+      fr_refs: ["FR-XXX"]
+      domain_refs: ["spec/domain_model.yaml#domain.commands"]
+    verification:
+      acceptance_criteria:
+        - "<Criterio verificavel>"
