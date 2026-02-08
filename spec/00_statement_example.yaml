@@ -24,7 +24,6 @@ statement:
   success_criteria: #(Optional)
   - "O usuário ter 90% de satisfação com a lista de tarefas"
   - "O usuário ter 90% de produtividade com a lista de tarefas"
-  - "O usuário ter 90% de satisfação com a compra"
 
   constraints: #(Optional)
   - "Não devemos influenciar a decisão do usuário em relação às tarefas"
