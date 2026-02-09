@@ -80,6 +80,9 @@ workflow:
       - id: "B5"
         action: "verify_requirements"
         description: "Ensure TASK acceptance criteria and FR/NFR trace are satisfied; record any spec issues."
+      - id: "B6"
+        action: "cleanup_drafts"
+        description: "Delete all files in spec/drafts/* created by this agent. Remove spec/drafts if empty."
 
 execution_modes:
   spike:

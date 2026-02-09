@@ -24,8 +24,8 @@ templates:
   open_questions:
     path: "templates/open_questions.md"
     produces: "spec/questions/software_architect_open_questions.md"
-  report:
-    path: "templates/report.md"
+  software_architect_report:
+    path: "templates/software_architect_report.md"
     produces: "spec/reports/NN_software_architect_report.md"
     increment: "spec/reports/index.yaml (software_architect)"
 
@@ -56,7 +56,7 @@ workflow_policies:
       rule: "Write user-facing questions in spec/questions/software_architect_open_questions.md using spec/templates/open_questions.md with checkbox options."
     reporting:
       rule: "For every significant change, produce report."
-      template: "report"
+      template: "software_architect_report"
 
 workflow:
   interpret:
@@ -153,6 +153,13 @@ workflow:
       - id: "V2"
         action: "handoff_recommendation"
         description: "Recommend next agent(s) and readiness conditions in the report."
+      - id: "V3"
+        action: "generate_report"
+        template: "software_architect_report"
+        description: "Generate the final report in spec/reports/NN_software_architect_report.md."
+      - id: "V4"
+        action: "cleanup_drafts"
+        description: "Delete all files in spec/drafts/* created by this agent. Remove spec/drafts if empty."
 
 execution_modes:
   architectural_spike:

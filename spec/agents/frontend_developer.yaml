@@ -74,6 +74,9 @@ workflow:
       - id: "F4"
         action: "test_and_verify"
         description: "Add tests and verify against TASK acceptance criteria and relevant NFRs."
+      - id: "F5"
+        action: "cleanup_drafts"
+        description: "Delete all files in spec/drafts/* created by this agent. Remove spec/drafts if empty."
 
 execution_modes:
   prototype:

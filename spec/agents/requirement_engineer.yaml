@@ -27,8 +27,8 @@ templates:
   open_questions:
     path: "templates/open_questions.md"
     produces: "spec/questions/requirement_engineer_open_questions.md"
-  report:
-    path: "templates/report.md"
+  requirement_engineer_report:
+    path: "templates/requirement_engineer_report.md"
     produces: "spec/reports/NN_requirement_engineer_report.md"
     increment: "spec/reports/index.yaml (requirement_engineer)"
 
@@ -62,7 +62,7 @@ workflow_policies:
       rule: "Keep statement, requirements, and domain modeling in separate artifacts; do not leak."
     reporting:
       rule: "For every significant change, produce report."
-      template: "report"
+      template: "requirement_engineer_report"
 
 
 workflow:
@@ -176,6 +176,13 @@ workflow:
       - id: "V5"
         action: "handoff_recommendation"
         description: "Recommend next agent(s) and readiness conditions in the report."
+      - id: "V6"
+        action: "generate_report"
+        template: "requirement_engineer_report"
+        description: "Generate the final report in spec/reports/NN_requirement_engineer_report.md."
+      - id: "V7"
+        action: "cleanup_drafts"
+        description: "Delete all files in spec/drafts/* created by this agent. Remove spec/drafts if empty."
 
 execution_modes:
   single_pass:

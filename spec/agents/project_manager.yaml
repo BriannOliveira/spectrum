@@ -24,8 +24,8 @@ templates:
   open_questions:
     path: "templates/open_questions.md"
     produces: "spec/questions/project_manager_open_questions.md"
-  report:
-    path: "templates/report.md"
+  project_manager_report:
+    path: "templates/project_manager_report.md"
     produces: "spec/reports/NN_project_manager_report.md"
     increment: "spec/reports/index.yaml (project_manager)"
 
@@ -54,7 +54,7 @@ workflow_policies:
       rule: "Write user-facing questions in spec/questions/project_manager_open_questions.md using spec/templates/open_questions.md with checkbox options."
     reporting:
       rule: "For every significant change, produce report."
-      template: "report"
+      template: "project_manager_report"
 
 workflow:
   plan:
@@ -117,6 +117,13 @@ workflow:
       - id: "V3"
         action: "handoff_recommendation"
         description: "Recommend next agent(s) and readiness conditions in the report."
+      - id: "V4"
+        action: "generate_report"
+        template: "project_manager_report"
+        description: "Generate the final report in spec/reports/NN_project_manager_report.md."
+      - id: "V5"
+        action: "cleanup_drafts"
+        description: "Delete all files in spec/drafts/* created by this agent. Remove spec/drafts if empty."
 
 execution_modes:
   quick_backlog:

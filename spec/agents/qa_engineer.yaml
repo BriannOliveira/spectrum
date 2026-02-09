@@ -93,6 +93,9 @@ workflow:
       - id: "Q4"
         action: "report_findings"
         description: "Document failures, flaky tests, and spec mismatches; propose minimal fixes."
+      - id: "Q5"
+        action: "cleanup_drafts"
+        description: "Delete all files in spec/drafts/* created by this agent. Remove spec/drafts if empty."
 
 execution_modes:
   lightweight:

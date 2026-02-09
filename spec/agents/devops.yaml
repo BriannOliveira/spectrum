@@ -99,6 +99,9 @@ workflow:
       - id: "DOPS5"
         action: "validate_operability"
         description: "Smoke test deploy; validate logs/metrics/traces are emitted."
+      - id: "DOPS6"
+        action: "cleanup_drafts"
+        description: "Delete all files in spec/drafts/* created by this agent. Remove spec/drafts if empty."
 
 execution_modes:
   bootstrap:
